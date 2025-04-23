@@ -1,24 +1,19 @@
+require('dotenv').config();
+
+
 //forma de importar node
 const express = require ('express');
+const dbConection = require('./dataBase/config');
 const app = express();
 
-app.get('/saludo', (req,res)=> {
-    res.send ('Hola saludos desde el backend');
-});
+//lectura y parseo del body
+app.use(express.json());
 
-app.post('/Crearusuario', (req,res) =>{
-   res.send('usuario creado');
-});
+app.use('/auth', require ('./Router/authRouter'));
 
-app.delete('/eliminarUsuario', (req,res)=>{
-    res.send('Usuario eliminado');
-});
-
-app.put('/editarUsuario', (req,res)=>{
-    res.send('Usuario editado');
-});
+dbConection();
 
 
-app.listen(4000,() => {
-    console.log ('ejecutandose en el puerto 4000')
+app.listen(process.env.PORTLOCAL,() => {
+    console.log (`Ejecutandose en el puerto ${process.env.PORTLOCAL}`)
 });
