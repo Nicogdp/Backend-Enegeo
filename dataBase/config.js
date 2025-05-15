@@ -1,3 +1,5 @@
+//Aqui hacemos la conexion de la bse de datos al backend ya que no esta en el mismo servidor que el backend
+
 const mongoose = require('mongoose');
 
 const dbConection = async () => {

@@ -1,20 +1,20 @@
-const {Schema, Model, model} = require ('mongoose');
+//aqui tenemos el modelo de esquema de los que queremos guardar en la base de datos
 
-const productoSchema = Schema ({
-    nombreProducto:{
-        type : String,
+const { Schema, model } = require('mongoose');
+
+const productoSchema = new Schema({
+    nombre: {
+        type: String,
         required: true,
     },
-
     precio:{
         type: Number,
-        required:true
+        required: true,
     },
-    
-    stock:{
-        type: Boolean,
-        required:true,
+    descripcion:{
+        type: String,
+        required: true,
     },
 });
 
-module.exports= model ('Productos', productoSchema);
+module.exports = model('Productos', productoSchema);

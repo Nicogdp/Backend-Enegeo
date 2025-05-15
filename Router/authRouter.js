@@ -1,5 +1,7 @@
+//Aqui generemos los endpoints donde si se hace un pat a la peticion login con un post por ejemplo ejecuta
+//toda la logica de login que esta en la carpeta controllers
+
 const express = require('express');
-const usuarioModel = require('../model/usuario-model'); // ruta consistente en minúsculas
 const { crearUsuario, loginUsuario } = require('../controllers/authController');
 const routerAuth = express.Router();
 
