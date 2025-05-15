@@ -58,7 +58,7 @@ const loginUsuario = async (req, res) => {
         if(!validarPassword){
             res.status(400).json({msg: 'El email o la contraseña es incorrecto'})
         }
-        res.status(201).json({msg:'Usuario logueado'})
+        res.status(201).json({msg:'Usuario logueado con exito'})
         
 
 
