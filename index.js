@@ -1,6 +1,5 @@
 require('dotenv').config();
 
-
 //forma de importar node
 const express = require ('express');
 const dbConection = require('./dataBase/config');
@@ -17,7 +16,7 @@ app.use(cors({
 app.use(express.json());
 
 app.use('/auth', require ('./Router/authRouter'));
-
+app.use('/admin', require ('./Router/adminRouter'));
 
 dbConection();
 
