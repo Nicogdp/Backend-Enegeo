@@ -1,5 +1,6 @@
 const usuarioModel = require("../model/usuario-model");
 const bcrypt = require('bcrypt');
+var jwt = require('jsonwebtoken');
 
 const crearUsuario = async (req, res) => {
    try {
@@ -58,13 +59,27 @@ const loginUsuario = async (req, res) => {
         if(!validarPassword){
             res.status(400).json({msg: 'El email o la contraseña es incorrecto'})
         }
-        res.status(201).json({msg:'Usuario logueado con exito'})
+
+        //creamos un objeto el cual definimos los datos que vamos a guardar
+        const payLoad = {
+            nombre: usuario.nombre,
+            rol: usuario.rol,
+          
+        };
+
+        const token = jwt.sign(payLoad,process.env.SECRET_JWT,{
+            expiresIn: "3h",
+        
+        });
+
+        res.status(200).json({msg:'Usuario logueado con exito',token})
         
 
 
 
 
     } catch (error) {
+        console.log(error)
         
     }
 
