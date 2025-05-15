@@ -1,5 +1,5 @@
 //Aqui generemos los endpoints donde si se hace un pat a la peticion login con un post por ejemplo ejecuta
-//toda la logica de login que esta en la carpeta controllers
+//toda la logica de login que esta en la carpeta controller
 
 const express = require('express');
 const { crearUsuario, loginUsuario } = require('../controllers/authController');

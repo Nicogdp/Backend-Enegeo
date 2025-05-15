@@ -1,6 +1,7 @@
 const productoModel = require("../model/producto-model");
 const usuarioModel = require("../model/usuario-model")
 
+
 const crearProducto = async (req,res)  => {
     try {
         const {nombre,precio,descripcion} = req.body;
