@@ -23,10 +23,10 @@ const crearProducto = async (req,res)  => {
         //guardamos en la base de datos
      await producto.save();
 
-     res.status(201).json({msg: 'producto creado'})
+     return res.status(201).json({msg: 'producto creado'})
 
     } catch (error) {
-        res.status(500).json({msg:'contactese con un administrador'})
+       return res.status(500).json({msg:'contactese con un administrador'})
     }
  
     
@@ -37,10 +37,10 @@ const listaProductos = async (req,res) => {
         //si al metodo findo no le pongo nada en el parametro me retornara todo el arreglo
         const listaProductos = await productoModel.find();
 
-        res.status(200).json({msg:'lista de productos enviada',listaProductos,})
+       return res.status(200).json({msg:'lista de productos enviada',listaProductos,})
 
     } catch (error) {
-           res.status(500).json({msg:'error, contactese con un administrador'})
+        return   res.status(500).json({msg:'error, contactese con un administrador'})
     }
 }
 
@@ -57,10 +57,10 @@ const editarProducto = async (req,res) => {
         // y reemplazamos el valor encontrado por el que mando el usuario
        await productoModel.findByIdAndUpdate(req.body._id, req.body)
 
-        res.status(200).json({msg:'producto editado'})
+       return res.status(200).json({msg:'producto editado'})
         
     } catch (error) {
-         res.status(500).json({msg:'error, contactese con un administrador'})
+        return res.status(500).json({msg:'error, contactese con un administrador'})
     }
 
 }
@@ -80,11 +80,11 @@ const eliminarProducto = async (req,res) => {
         await productoModel.findByIdAndDelete(req.params.id)
 
 
-        res.status(200).json({msg:'producto eliminado'})
+        return res.status(200).json({msg:'producto eliminado'})
 
         
     } catch (error) {
-        res.status(500).json({msg:'error, contactese con un administrador'})
+       return res.status(500).json({msg:'error, contactese con un administrador'})
     }
 
 }
@@ -93,12 +93,12 @@ const listaUsuarios = async (req,res) =>{
     try {
         const listaUsuarios = await usuarioModel.find();
 
-        res.status(200).json({msg:'lista de usuarios enviada',listaUsuarios,})
+       return res.status(200).json({msg:'lista de usuarios enviada',listaUsuarios,})
 
 
 
     } catch (error) {
-          res.status(500).json({msg:'error, contactese con un administrador'})
+        return  res.status(500).json({msg:'error, contactese con un administrador'})
     }
 }
 
