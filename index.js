@@ -5,11 +5,12 @@ const express = require ('express');
 const dbConection = require('./dataBase/config');
 const cors = require('cors');
 const app = express();
+const consultaPrecioRoutes = require('./routes/consultaPrecio');
 
 
 
 app.use(cors({
-  origin: 'http://localhost:5174', // asegurate que coincida con donde corre tu frontend
+  origin: 'http://localhost:5173', // asegurate que coincida con donde corre tu frontend
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true
 }));
@@ -20,6 +21,7 @@ app.use(express.json());
 app.use('/auth', require ('./Router/authRouter'));
 app.use('/admin', require ('./Router/adminRouter'));
 app.use('/api', require('./Router/preinscripcionRoutes'));
+app.use('/api/email', consultaPrecioRoutes);
 
 dbConection();
 
