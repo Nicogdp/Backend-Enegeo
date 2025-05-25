@@ -12,7 +12,7 @@ const validarJwt = (req,res,next) => {
         
 
         const verificarToken = jwt.verify(token,process.env.SECRET_JWT);
-        console.log(verificarToken)
+        
     } catch (error) {
         res.status(401).json({msg:'Token vencido'})
     };

@@ -5,7 +5,7 @@ const routerAdmin = express.Router();
 
 routerAdmin.post('/crearProducto', validarJwt ,crearProducto);
 
-routerAdmin.get('/productos', validarJwt,listaProductos);
+routerAdmin.get('/productos',listaProductos);
 
 routerAdmin.put('/editarProducto',validarJwt, editarProducto);
 

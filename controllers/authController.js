@@ -48,6 +48,20 @@ const loginUsuario = async (req, res) => {
             res.status(400).json({msg: 'Todos los campos son obligatorios'});
         }
         
+         // . Admin hardcodeado
+        if (email === 'admin@energeo.com' && password === '1234') {
+              const token = jwt.sign(
+          { email, rol: 'admin' },
+           process.env.SECRET_JWT,
+        { expiresIn: '22h' }
+      );
+
+          return res.status(200).json({
+            msg: 'Admin logueado con éxito',
+           token,
+            rol: 'admin'
+       });
+    }
     
         let usuario = await usuarioModel.findOne({email});
         if(!usuario){
@@ -68,7 +82,7 @@ const loginUsuario = async (req, res) => {
         };
 
         const token = jwt.sign(payLoad,process.env.SECRET_JWT,{
-            expiresIn: "3h",
+            expiresIn: "22h",
         
         });
 
