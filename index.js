@@ -10,7 +10,7 @@ const consultaPrecioRoutes = require('./routes/consultaPrecio');
 
 
 app.use(cors({
-  origin: 'http://localhost:5173', // asegurate que coincida con donde corre tu frontend
+  origin: 'https://energeotuc.netlify.app/', // asegurate que coincida con donde corre tu frontend
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true
 }));
