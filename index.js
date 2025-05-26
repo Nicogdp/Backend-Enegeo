@@ -6,11 +6,21 @@ const dbConection = require('./dataBase/config');
 const cors = require('cors');
 const app = express();
 const consultaPrecioRoutes = require('./routes/consultaPrecio');
+const allowedOrigins = [
+  'http://localhost:5173',
+  'https://energeotuc.netlify.app'
+];
 
 
 
 app.use(cors({
-  origin: 'https://energeotuc.netlify.app/shop', // asegurate que coincida con donde corre tu frontend
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true
 }));
